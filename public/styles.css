@@ -2,6 +2,11 @@ html {
     background: lightskyblue;
 }
 
+.chartContainer {
+    height: 370px;
+    width: 100%;
+}
+
 h1 {
     margin-left: 50px;
     margin-right: 50px;

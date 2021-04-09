@@ -86,6 +86,26 @@ router.put("/dining", async (req, res) => {
 /// /////////////////////////////////
 /// ////////Meals Endpoints//////////
 /// /////////////////////////////////
+
+router.route("/fullMeal")
+  .get(async (req, res) => {
+    try {
+      const meals = await db.Meals.findAll();
+      const macros = await db.Macros.findAll();
+      const fullMeals = meals.map((meal) => {
+        const macroEntry = macros.find((macro) => macro.meal_id === meal.meal_id);
+        return {
+          ...meal.dataValues,
+          ...macroEntry.dataValues
+        };
+      });
+      res.json({data: fullMeals});
+    } catch (err) {
+      console.error(err);
+      res.error("Server error");
+    }
+  });
+
 router.get("/meals", async (req, res) => {
   try {
     const meals = await db.Meals.findAll();
