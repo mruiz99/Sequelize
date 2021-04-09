@@ -5,18 +5,16 @@ async function getMeals() {
   return dataMeal;
 }
   
-async function getChart() {
+async function getChart(element) {
   
-  let chart = new CanvasJS.Chart("chartContainer", {
+  const chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     title:{
-      text: "Evening Sales in a Restaurant"
+      text: "Meals and their Macros"
     },
     axisX: {
-      valueFormatString: "DDD"
     },
     axisY: {
-      prefix: "$"
     },
     toolTip: {
       shared: true
@@ -27,84 +25,166 @@ async function getChart() {
     },
     data: [{
       type: "stackedBar",
-      name: "Meals",
+      name: element[0]['meal_name'],
       showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
       dataPoints: [
-        { x: new Date(2017, 0, 30), y: 56 },
-        { x: new Date(2017, 0, 31), y: 45 },
-        { x: new Date(2017, 1, 1), y: 71 },
-        { x: new Date(2017, 1, 2), y: 41 },
-        { x: new Date(2017, 1, 3), y: 60 },
-        { x: new Date(2017, 1, 4), y: 75 },
-        { x: new Date(2017, 1, 5), y: 98 }
+        { y: element[0]['calories'], label: "Calories"},
+        { y: element[0]['serving_size'], label: "Serving Size" },
+        { y: element[0]['cholesterol'], label: "Cholesterol" },
+        { y: element[0]['sodium'], label: "Sodium" },
+        { y: element[0]['carbs'], label: "Carbs" },
+        { y: element[0]['protein'], label: "Protein" },
+        { y: element[0]['fat'], label: "Fat" }
       ]
     },
     {
       type: "stackedBar",
-      name: "Snacks",
+      name: element[1]['meal_name'],
       showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
       dataPoints: [
-        { x: new Date(2017, 0, 30), y: 86 },
-        { x: new Date(2017, 0, 31), y: 95 },
-        { x: new Date(2017, 1, 1), y: 71 },
-        { x: new Date(2017, 1, 2), y: 58 },
-        { x: new Date(2017, 1, 3), y: 60 },
-        { x: new Date(2017, 1, 4), y: 65 },
-        { x: new Date(2017, 1, 5), y: 89 }
+        { y: element[1]['calories'], label: "Calories"},
+        { y: element[1]['serving_size'], label: "Serving Size" },
+        { y: element[1]['cholesterol'], label: "Cholesterol" },
+        { y: element[1]['sodium'], label: "Sodium" },
+        { y: element[1]['carbs'], label: "Carbs" },
+        { y: element[1]['protein'], label: "Protein" },
+        { y: element[1]['fat'], label: "Fat" }
       ]
     },
     {
       type: "stackedBar",
-      name: "Drinks",
+      name: element[2]['meal_name'],
       showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
       dataPoints: [
-        { x: new Date(2017, 0, 30), y: 48 },
-        { x: new Date(2017, 0, 31), y: 45 },
-        { x: new Date(2017, 1, 1), y: 41 },
-        { x: new Date(2017, 1, 2), y: 55 },
-        { x: new Date(2017, 1, 3), y: 80 },
-        { x: new Date(2017, 1, 4), y: 85 },
-        { x: new Date(2017, 1, 5), y: 83 }
+        { y: element[2]['calories'], label: "Calories"},
+        { y: element[2]['serving_size'], label: "Serving Size" },
+        { y: element[2]['cholesterol'], label: "Cholesterol" },
+        { y: element[2]['sodium'], label: "Sodium" },
+        { y: element[2]['carbs'], label: "Carbs" },
+        { y: element[2]['protein'], label: "Protein" },
+        { y: element[2]['fat'], label: "Fat" }
       ]
     },
     {
       type: "stackedBar",
-      name: "Dessert",
+      name: element[3]['meal_name'],
       showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
       dataPoints: [
-        { x: new Date(2017, 0, 30), y: 61 },
-        { x: new Date(2017, 0, 31), y: 55 },
-        { x: new Date(2017, 1, 1), y: 61 },
-        { x: new Date(2017, 1, 2), y: 75 },
-        { x: new Date(2017, 1, 3), y: 80 },
-        { x: new Date(2017, 1, 4), y: 85 },
-        { x: new Date(2017, 1, 5), y: 105 }
+        { y: element[3]['calories'], label: "Calories"},
+        { y: element[3]['serving_size'], label: "Serving Size" },
+        { y: element[3]['cholesterol'], label: "Cholesterol" },
+        { y: element[3]['sodium'], label: "Sodium" },
+        { y: element[3]['carbs'], label: "Carbs" },
+        { y: element[3]['protein'], label: "Protein" },
+        { y: element[3]['fat'], label: "Fat" }
       ]
     },
     {
       type: "stackedBar",
-      name: "Takeaway",
+      name: element[4]['meal_name'],
       showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
       dataPoints: [
-        { x: new Date(2017, 0, 30), y: 52 },
-        { x: new Date(2017, 0, 31), y: 55 },
-        { x: new Date(2017, 1, 1), y: 20 },
-        { x: new Date(2017, 1, 2), y: 35 },
-        { x: new Date(2017, 1, 3), y: 30 },
-        { x: new Date(2017, 1, 4), y: 45 },
-        { x: new Date(2017, 1, 5), y: 25 }
+        { y: element[4]['calories'], label: "Calories"},
+        { y: element[4]['serving_size'], label: "Serving Size" },
+        { y: element[4]['cholesterol'], label: "Cholesterol" },
+        { y: element[4]['sodium'], label: "Sodium" },
+        { y: element[4]['carbs'], label: "Carbs" },
+        { y: element[4]['protein'], label: "Protein" },
+        { y: element[4]['fat'], label: "Fat" }
       ]
-    }]
+    },
+    {
+      type: "stackedBar",
+      name: element[5]['meal_name'],
+      showInLegend: "true",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
+      dataPoints: [
+        { y: element[5]['calories'], label: "Calories"},
+        { y: element[5]['serving_size'], label: "Serving Size" },
+        { y: element[5]['cholesterol'], label: "Cholesterol" },
+        { y: element[5]['sodium'], label: "Sodium" },
+        { y: element[5]['carbs'], label: "Carbs" },
+        { y: element[5]['protein'], label: "Protein" },
+        { y: element[5]['fat'], label: "Fat" }
+      ]
+    },
+    {
+      type: "stackedBar",
+      name: element[6]['meal_name'],
+      showInLegend: "true",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
+      dataPoints: [
+        { y: element[6]['calories'], label: "Calories"},
+        { y: element[6]['serving_size'], label: "Serving Size" },
+        { y: element[6]['cholesterol'], label: "Cholesterol" },
+        { y: element[6]['sodium'], label: "Sodium" },
+        { y: element[6]['carbs'], label: "Carbs" },
+        { y: element[6]['protein'], label: "Protein" },
+        { y: element[6]['fat'], label: "Fat" }
+      ]
+    },
+    {
+      type: "stackedBar",
+      name: element[7]['meal_name'],
+      showInLegend: "true",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
+      dataPoints: [
+        { y: element[7]['calories'], label: "Calories"},
+        { y: element[7]['serving_size'], label: "Serving Size" },
+        { y: element[7]['cholesterol'], label: "Cholesterol" },
+        { y: element[7]['sodium'], label: "Sodium" },
+        { y: element[7]['carbs'], label: "Carbs" },
+        { y: element[7]['protein'], label: "Protein" },
+        { y: element[7]['fat'], label: "Fat" }
+      ]
+    },
+    {
+      type: "stackedBar",
+      name: element[8]['meal_name'],
+      showInLegend: "true",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
+      dataPoints: [
+        { y: element[8]['calories'], label: "Calories"},
+        { y: element[8]['serving_size'], label: "Serving Size" },
+        { y: element[8]['cholesterol'], label: "Cholesterol" },
+        { y: element[8]['sodium'], label: "Sodium" },
+        { y: element[8]['carbs'], label: "Carbs" },
+        { y: element[8]['protein'], label: "Protein" },
+        { y: element[8]['fat'], label: "Fat" }
+      ]
+    },
+    {
+      type: "stackedBar",
+      name: element[9]['meal_name'],
+      showInLegend: "true",
+      //xValueFormatString: "DD, MMM",
+      yValueFormatString: "#,##0",
+      dataPoints: [
+        { y: element[9]['calories'], label: "Calories"},
+        { y: element[9]['serving_size'], label: "Serving Size" },
+        { y: element[9]['cholesterol'], label: "Cholesterol" },
+        { y: element[9]['sodium'], label: "Sodium" },
+        { y: element[9]['carbs'], label: "Carbs" },
+        { y: element[9]['protein'], label: "Protein" },
+        { y: element[9]['fat'], label: "Fat" }
+      ]
+    },
+
+    ]
   
   });
   chart.render();
@@ -162,13 +242,23 @@ async function fetchHalls() {
   addTable();
 }
 
-
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+}
 
 async function windowActions() {
   fetchHalls();
-  const meals = await getMeals();
-  console.table(meals.data);
-  getChart();
+  const results = await getMeals();
+  const meals = results.data;
+  const numArray = [1,2,3,4,5,6,7,8,9,10];
+  const selectedMeals = numArray.map((element) => {
+    const random = getRandomIntInclusive(0, meals.length-1);
+    return meals[random];
+  });
+  getChart(selectedMeals);
+  console.table(selectedMeals);
 
 }
   
